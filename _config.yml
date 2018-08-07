@@ -3,9 +3,9 @@ title: kow
 subtitle: kow's blog
 welcome_message: <a href="https://app.ikow.cn/" target="_blank">Hack 4 fun</a>
 description: Welcome to kow's blog
-creator: <a href="http://www.ikow.cn/">kow</a>
+creator: <a href="https://www.ikow.cn/">kow</a>
 
-url: "http://www.ikow.cn"
+url: "https://www.ikow.cn"
 
 permalink: /:year/:month/:title/
 
