@@ -1,0 +1,517 @@
+# Portfolio data for www.ikow.cn — link-only, publicly-verifiable.
+# CVE attribution corrected & verified 2026-07-10 (only CVEs credited to Qi Deng).
+bio:
+  name: Qi Deng
+  handle: kow
+  title: Security Researcher & Engineering Leader
+  roles:
+  - Security Researcher
+  - Engineering Leader
+  - Exploit Developer
+  - Bug Bounty Hunter
+  desc: I build LLM-powered agents that break production AI systems — remote code execution in OpenAI
+    ChatGPT Agent Mode, Meta's Manus, and more — and turn what I find into CVEs, patents, and shipped
+    defenses.
+  affiliation:
+  - label: Now — AI security @ Aurascape
+    url: https://aurascape.ai/resources/auralabs-research/
+  - label: Prev — Unit 42, Palo Alto Networks
+    url: https://unit42.paloaltonetworks.com/author/qi-deng/
+  social:
+    github: https://github.com/ikow
+    hackerone: https://hackerone.com/kow
+    bugcrowd: https://bugcrowd.com/ev1lkow
+    linkedin: ''
+    ctftime: ''
+    twitter: https://twitter.com/kow233
+    email: qideng2017@gmail.com
+stats:
+- value: '27'
+  label: CVEs credited to me
+  sub: Adobe · NVIDIA · Aurascape advisories
+- value: '5'
+  label: US patents (published)
+  sub: LLM security · 1 granted
+- value: '5'
+  label: Frontier-AI findings
+  sub: ChatGPT · Manus · AgentCore · Arcade
+- value: 20+
+  label: Articles & talks
+  sub: Unit 42 · AuraLabs · Black Hat
+frontier:
+- title: OpenAI ChatGPT Agent Mode
+  sub: Reverse Shell RCE
+  target: OpenAI ChatGPT — Agent Mode
+  vector: Indirect prompt injection
+  impact: Arbitrary command execution on the sandboxed agent VM
+  status: Reported; OpenAI patched in ~2 weeks
+  sevLabel: RCE
+  sevClass: critical
+  url: https://aurascape.ai/resources/auralabs-research/reverse-shell-chatgpt-agent-mode/
+  urlLabel: AuraLabs writeup
+  press: https://www.businesswire.com/news/home/20250826738964/en/Aurascape-Aura-Labs-Identifies-and-Reports-ChatGPT-Agent-Mode-Vulnerability
+  pub: “Your Agent, My Shell” · AuraLabs, Aug 2025
+- title: Meta Manus AI Agent
+  sub: SilentBridge — Sandbox-Escape RCE
+  target: Meta Manus AI Agent (E2B sandbox)
+  vector: Zero-click indirect prompt injection
+  impact: Full agent takeover + sandbox-escape RCE, no user interaction
+  status: $15,000 Meta bug bounty
+  sevLabel: RCE · $15K
+  sevClass: critical
+  url: https://aurascape.ai/resources/auralabs-research/silentbridge-zero-click-agent-takeover-meta-manus/
+  urlLabel: AuraLabs writeup
+  press: ''
+  pub: “SilentBridge” · AuraLabs, Feb 2026
+- title: AWS AgentCore
+  sub: Silent Leak — Covert Exfiltration
+  target: AWS AgentCore code interpreter
+  vector: DNS tunneling
+  impact: Covert data exfiltration through an undetected side channel
+  status: Reported to AWS VDP; fix validated
+  sevLabel: Data Exfil
+  sevClass: high
+  url: https://aurascape.ai/resources/auralabs-research/silent-leak-dns-tunneling-aws-agentcore-code-interpreter/
+  urlLabel: AuraLabs writeup
+  press: ''
+  pub: “Silent Leak” · AuraLabs, Jan 2026
+- title: Arcade MCP Server
+  sub: Default-Secret Auth Bypass
+  target: Arcade MCP server
+  vector: Hardcoded default worker secret
+  impact: JWT forgery → authentication bypass
+  status: CVE-2025-66454
+  sevLabel: Auth Bypass
+  sevClass: high
+  url: https://aurascape.ai/resources/auralabs-research/mcp-default-secret-vulnerability-arcade-aurascape/
+  urlLabel: AuraLabs writeup
+  press: https://github.com/advisories/GHSA-g2jx-37x6-6438
+  pub: “When AI Agents Go Online” · AuraLabs, Dec 2025
+- title: LLM Answer Engines
+  sub: Search-Index Poisoning
+  target: LLM search / indexing pipelines
+  vector: Index poisoning
+  impact: AI assistants surface attacker-controlled fake support numbers
+  status: Covered by ZDNet &amp; Gizmodo
+  sevLabel: AI Abuse
+  sevClass: research
+  url: https://aurascape.ai/resources/blog/llm-search-poisoning-fake-support-numbers
+  urlLabel: AuraLabs writeup
+  press: https://gizmodo.com/ai-scam-phone-numbers-2000697589
+  pub: “When AI Recommends Scammers” · AuraLabs, Dec 2025
+exploitDev:
+- title: Copy Fail — Live Code Corruption via Page Cache
+  target: Linux kernel — targets CVE-2026-31431 (bug discovered by Theori)
+  platform: Linux Kernel
+  sevLabel: Exploit Dev
+  sevClass: default
+  oneLiner: 'My novel exploitation technique for the Copy Fail kernel bug: instead of corrupting data
+    files, write shellcode into libc''s exit() through the shared page cache so every exiting process
+    runs it — one-shot root, no disk modification.'
+  repo: https://github.com/ikow/CVE-2026-31431-live-code-corruption
+  link: https://www.ikow.cn/cve-2026-31431-live-code-corruption/
+  linkLabel: writeup
+- title: Dirty Frag / Fragnesia — Page-Cache Write LPE Analysis
+  target: Linux kernel — analysis of CVE-2026-46300 (disclosed by W. Bowling)
+  platform: Linux Kernel
+  sevLabel: Analysis
+  sevClass: default
+  oneLiner: Analysis and verified exploitation of the Fragnesia / Dirty-Frag page-cache-write LPE class,
+    including a portable live-code-corruption variant that applies the Copy Fail technique to the ESP/RxRPC
+    sinks.
+  repo: https://github.com/ikow/dirty-frag-analysis
+  link: ''
+  linkLabel: ''
+- title: Smashing The Browser — From Discovery to Exploit
+  target: Google Chrome & Internet Explorer 11
+  platform: Browser
+  sevLabel: 0-day
+  sevClass: default
+  oneLiner: 'A three-part series: a custom browser fuzzing framework (StateFuzzer), advanced Chrome/IE11
+    heap-exploitation techniques, and full IE11 use-after-free 0-day exploit development.'
+  repo: https://github.com/ikow/Smashing_The_Browser
+  link: ''
+  linkLabel: ''
+- title: OSV.dev Stored XSS — Google VRP
+  target: OSV.dev (Google Open Source Vulnerabilities)
+  platform: Web
+  sevLabel: Stored XSS
+  sevClass: medium
+  oneLiner: Stored cross-site scripting in Google's OSV.dev vulnerability database, reported through the
+    Google Vulnerability Reward Program.
+  repo: https://github.com/ikow/osv-xss-security-test
+  link: https://issuetracker.google.com/issues/512669343
+  linkLabel: VRP issue
+creditedCves:
+- group: AI &amp; LLM Infrastructure — Aurascape (2025–2026)
+  items:
+  - id: CVE-2025-33234
+    vendor: NVIDIA runx
+    desc: Code injection → code execution / privesc
+    cvss: '7.8'
+    url: https://nvd.nist.gov/vuln/detail/CVE-2025-33234
+  - id: CVE-2026-27482
+    vendor: Ray
+    desc: Unauthenticated dashboard DELETE endpoints (DoS)
+    cvss: '5.9'
+    url: https://github.com/advisories/GHSA-q5fh-2hc8-f6rq
+  - id: CVE-2025-66454
+    vendor: Arcade MCP
+    desc: Hardcoded default worker secret → auth bypass
+    cvss: '6.5'
+    url: https://github.com/advisories/GHSA-g2jx-37x6-6438
+  - id: CVE-2026-8328
+    vendor: CPython
+    desc: SSRF in ftplib ftpcp() (incomplete fix of CVE-2021-4189)
+    cvss: '5.9'
+    url: https://nvd.nist.gov/vuln/detail/CVE-2026-8328
+  - id: CVE-2026-28395
+    vendor: OpenClaw
+    desc: Relay improper network binding (wildcard → all interfaces)
+    cvss: ''
+    url: https://github.com/advisories/GHSA-qw99-grcx-4pvm
+  - id: CVE-2026-32977
+    vendor: OpenClaw
+    desc: fs-bridge writeFile sandbox bypass (TOCTOU)
+    cvss: ''
+    url: https://github.com/advisories/GHSA-xvx8-77m6-gwg6
+  - id: CVE-2026-45003
+    vendor: OpenClaw
+    desc: Workspace .env connector-endpoint override
+    cvss: ''
+    url: https://github.com/advisories/GHSA-55cf-xx38-4p9p
+  - id: CVE-2026-45316
+    vendor: Open WebUI
+    desc: Read-only users can toggle note pin (broken permission check)
+    cvss: ''
+    url: https://github.com/advisories/GHSA-jx2x-j75f-xq3j
+- group: Enterprise &amp; CMS
+  items:
+  - id: CVE-2026-35223
+    vendor: Joomla
+    desc: Privilege escalation via web-service endpoints (faulty ACL)
+    cvss: '8.6'
+    url: https://developer.joomla.org/security-centre.html
+  - id: CVE-2020-16876
+    vendor: Microsoft
+    desc: Windows App Compatibility Client Library elevation of privilege
+    cvss: '7.8'
+    url: https://nvd.nist.gov/vuln/detail/CVE-2020-16876
+- group: Adobe Acrobat &amp; Reader — Unit 42 (2018–2019)
+  items:
+  - id: CVE-2019-7050
+    vendor: Adobe
+    desc: Use-after-free → RCE (APSB19-07)
+    cvss: '9.8'
+    url: https://nvd.nist.gov/vuln/detail/CVE-2019-7050
+  - id: CVE-2019-7051
+    vendor: Adobe
+    desc: Untrusted pointer dereference → RCE (APSB19-07)
+    cvss: '9.8'
+    url: https://nvd.nist.gov/vuln/detail/CVE-2019-7051
+  - id: CVE-2019-7083
+    vendor: Adobe
+    desc: Use-after-free → RCE (APSB19-07)
+    cvss: '9.8'
+    url: https://nvd.nist.gov/vuln/detail/CVE-2019-7083
+  - id: CVE-2019-7046
+    vendor: Adobe
+    desc: Untrusted pointer dereference → RCE (APSB19-07)
+    cvss: ''
+    url: https://nvd.nist.gov/vuln/detail/CVE-2019-7046
+  - id: CVE-2019-7768
+    vendor: Adobe
+    desc: Use-after-free → RCE (APSB19-18)
+    cvss: '9.8'
+    url: https://nvd.nist.gov/vuln/detail/CVE-2019-7768
+  - id: CVE-2019-7772
+    vendor: Adobe
+    desc: Use-after-free → RCE (APSB19-18)
+    cvss: '9.8'
+    url: https://nvd.nist.gov/vuln/detail/CVE-2019-7772
+  - id: CVE-2019-7832
+    vendor: Adobe
+    desc: Heap overflow / UAF → RCE (APSB19-18)
+    cvss: '9.8'
+    url: https://nvd.nist.gov/vuln/detail/CVE-2019-7832
+  - id: CVE-2019-7833
+    vendor: Adobe
+    desc: Use-after-free → RCE (APSB19-18)
+    cvss: '9.8'
+    url: https://nvd.nist.gov/vuln/detail/CVE-2019-7833
+  - id: CVE-2019-7834
+    vendor: Adobe
+    desc: Use-after-free → RCE (APSB19-18)
+    cvss: '9.8'
+    url: https://nvd.nist.gov/vuln/detail/CVE-2019-7834
+  - id: CVE-2019-16458
+    vendor: Adobe
+    desc: Out-of-bounds read → info disclosure (APSB19-55)
+    cvss: '7.5'
+    url: https://nvd.nist.gov/vuln/detail/CVE-2019-16458
+  - id: CVE-2018-16031
+    vendor: Adobe
+    desc: Acrobat/Reader memory corruption → RCE (APSB18-41)
+    cvss: ''
+    url: https://nvd.nist.gov/vuln/detail/CVE-2018-16031
+  - id: CVE-2018-16032
+    vendor: Adobe
+    desc: Acrobat/Reader memory corruption → RCE (APSB18-41)
+    cvss: ''
+    url: https://nvd.nist.gov/vuln/detail/CVE-2018-16032
+  - id: CVE-2018-16033
+    vendor: Adobe
+    desc: Acrobat/Reader memory corruption → RCE (APSB18-41)
+    cvss: ''
+    url: https://nvd.nist.gov/vuln/detail/CVE-2018-16033
+  - id: CVE-2018-16038
+    vendor: Adobe
+    desc: Acrobat/Reader memory corruption → RCE (APSB18-41)
+    cvss: ''
+    url: https://nvd.nist.gov/vuln/detail/CVE-2018-16038
+  - id: CVE-2018-16040
+    vendor: Adobe
+    desc: Acrobat/Reader memory corruption → RCE (APSB18-41)
+    cvss: ''
+    url: https://nvd.nist.gov/vuln/detail/CVE-2018-16040
+  - id: CVE-2018-16047
+    vendor: Adobe
+    desc: Acrobat/Reader memory corruption → RCE (APSB18-41)
+    cvss: ''
+    url: https://nvd.nist.gov/vuln/detail/CVE-2018-16047
+  - id: CVE-2018-19698
+    vendor: Adobe
+    desc: Acrobat/Reader memory corruption → RCE (APSB18-41)
+    cvss: ''
+    url: https://nvd.nist.gov/vuln/detail/CVE-2018-19698
+creditedNote:
+  label: All GitHub Security Advisory credits (@qi-scape)
+  url: https://github.com/advisories?query=credit%3Aqi-scape
+patents:
+- id: US 12,526,307 B2
+  granted: true
+  title: Inline Vulnerability Detection for LLM-Generated Program Code
+  url: https://patents.google.com/patent/US12526307B2/en
+- id: US 2025/0173436 A1
+  granted: false
+  title: Context-Based Cyberattack Signature Generation with Large Language Models
+  url: https://patents.google.com/patent/US20250173436A1/en
+- id: US 2026/0113348 A1
+  granted: false
+  title: Plug-In Generation for Security Testing Tools Using LLMs
+  url: https://patents.google.com/patent/US20260113348A1/en
+- id: US 2026/0113352 A1
+  granted: false
+  title: Cybersecurity Threat Network Traffic Generation with LLMs
+  url: https://patents.google.com/patent/US20260113352A1/en
+- id: US 2026/0030345 A1
+  granted: false
+  title: LLM-Based Mapping of CVEs to MITRE ATT&CK Tactics & Techniques
+  url: https://patents.google.com/patent/US20260030345A1/en
+publications:
+- group: Frontier AI Security — AuraLabs / Aurascape
+  items:
+  - title: 'Your Agent, My Shell: Reverse Shell on OpenAI ChatGPT Agent Mode'
+    date: Aug 2025
+    url: https://aurascape.ai/resources/auralabs-research/reverse-shell-chatgpt-agent-mode/
+  - title: 'SilentBridge: Zero-Click Agent Takeover in Meta Manus'
+    date: Feb 2026
+    url: https://aurascape.ai/resources/auralabs-research/silentbridge-zero-click-agent-takeover-meta-manus/
+  - title: 'Silent Leak: DNS Tunneling in AWS AgentCore Code Interpreter'
+    date: Jan 2026
+    url: https://aurascape.ai/resources/auralabs-research/silent-leak-dns-tunneling-aws-agentcore-code-interpreter/
+  - title: 'When AI Recommends Scammers: Attack Abuses LLM Indexing'
+    date: Dec 2025
+    url: https://aurascape.ai/resources/blog/llm-search-poisoning-fake-support-numbers
+  - title: 'When AI Agents Go Online: Default MCP Secrets Become Vulnerabilities'
+    date: Dec 2025
+    url: https://aurascape.ai/resources/auralabs-research/mcp-default-secret-vulnerability-arcade-aurascape/
+  - title: AI Agent Security Starts at the Execution Layer
+    date: Jul 2026
+    url: https://aurascape.ai/resources/blog/ai-agent-security-execution-layer/
+- group: Threat Research — Unit 42, Palo Alto Networks
+  items:
+  - title: 'No Way to Hide: Uncovering New DNS Tunneling Campaigns'
+    date: '2024'
+    url: https://unit42.paloaltonetworks.com/detecting-dns-tunneling-campaigns/
+  - title: Vulnerabilities in LangChain Gen AI
+    date: '2024'
+    url: https://unit42.paloaltonetworks.com/langchain-vulnerabilities/
+  - title: 'Parrot TDS: A Persistent and Evolving Malware Campaign'
+    date: '2024'
+    url: https://unit42.paloaltonetworks.com/parrot-tds-javascript-evolution-analysis/
+  - title: Financial Fraud APK Campaign
+    date: '2024'
+    url: https://unit42.paloaltonetworks.com/malicious-apks-steal-pii-from-chinese-users/
+  - title: Worldwide Linux XorDDoS Campaign
+    date: '2023'
+    url: https://unit42.paloaltonetworks.com/new-linux-xorddos-trojan-campaign-delivers-malware/
+  - title: 'Threat Brief: Microsoft Critical Vulnerabilities (CVE-2022-26809 et al.)'
+    date: '2022'
+    url: https://unit42.paloaltonetworks.com/microsoft-cve-2022-26925-etc/
+  - title: SpringShell — Spring Core RCE (CVE-2022-22965)
+    date: '2022'
+    url: https://unit42.paloaltonetworks.com/cve-2022-22965-springshell/
+  - title: Apache Log4j / Log4Shell (CVE-2021-44228)
+    date: '2021'
+    url: https://unit42.paloaltonetworks.com/apache-log4j-vulnerability-cve-2021-44228/
+  - title: 'New Attack Surface: Microsoft IIS & SQL Server (Black Hat Asia 2021)'
+    date: '2021'
+    url: https://unit42.paloaltonetworks.com/iis-and-sql-server/
+  - title: Nagios XI Servers Turned Into Cryptominers
+    date: '2021'
+    url: https://unit42.paloaltonetworks.com/nagios-xi-vulnerability-cryptomining/
+  - title: Two New IoT Vulnerabilities with Mirai Payloads
+    date: '2020'
+    url: https://unit42.paloaltonetworks.com/iot-vulnerabilities-mirai-payloads/
+  - title: vBulletin Pre-Auth RCE (CVE-2020-17496) Exploited in the Wild
+    date: '2020'
+    url: https://unit42.paloaltonetworks.com/cve-2020-17496/
+  - title: Citrix ADC / Gateway Directory Traversal (CVE-2019-19781)
+    date: '2020'
+    url: https://unit42.paloaltonetworks.com/exploits-in-the-wild-for-citrix-adc-and-citrix-gateway-directory-traversal-vulnerability-cve-2019-19781/
+  - title: vBulletin Pre-Auth RCE (CVE-2019-16759) Exploited in the Wild
+    date: '2019'
+    url: https://unit42.paloaltonetworks.com/exploits-in-the-wild-for-vbulletin-pre-auth-rce-vulnerability-cve-2019-16759/
+  - title: WordPress Social Warfare Plugin (CVE-2019-9978) Exploited in the Wild
+    date: '2019'
+    url: https://unit42.paloaltonetworks.com/exploits-in-the-wild-for-wordpress-social-warfare-plugin-cve-2019-9978/
+talks:
+- title: Give Me a SQL Injection, I Shall PWN IIS and SQL Server
+  venue: Black Hat Asia 2021
+  url: https://i.blackhat.com/asia-21/Thursday-Handouts/as-21-Yan-Give-Me-a-Sql-Injection-I-Shall-Pwn-IIS-and-Sql-Server.pdf
+press:
+- outlet: ZDNet
+  major: true
+  date: Dec 2025
+  title: Scammers are poisoning AI search results to steer you into their traps
+  url: https://tech.yahoo.com/cybersecurity/articles/scammers-poisoning-ai-search-results-150256932.html
+- outlet: Gizmodo
+  major: true
+  date: Dec 2025
+  title: How Scammers Poison AI Results With Fake Customer Support Numbers
+  url: https://gizmodo.com/ai-scam-phone-numbers-2000697589
+- outlet: Complete AI Training
+  major: false
+  date: May 2026
+  title: Chatbots are sharing strangers' phone numbers — quotes Qi Deng, Aurascape
+  url: https://completeaitraining.com/news/chatbots-are-sharing-strangers-phone-numbers-and-criminals/
+- outlet: Business Wire
+  major: false
+  date: Dec 2025
+  title: Aurascape Researchers Expose New AI Attack Sending Travelers to Scam Call Centers
+  url: https://www.businesswire.com/news/home/20251208251854/en/Aurascape-Researchers-Expose-New-AI-Attack-That-Sends-Travelers-To-Scam-Airline-Support-Call-Centers
+- outlet: Business Wire
+  major: false
+  date: Aug 2025
+  title: Aurascape Aura Labs Identifies and Reports ChatGPT Agent Mode Vulnerability
+  url: https://www.businesswire.com/news/home/20250826738964/en/Aurascape-Aura-Labs-Identifies-and-Reports-ChatGPT-Agent-Mode-Vulnerability
+tools:
+- name: Code Audit
+  tagline: White-box code-security audit skill with multi-agent analysis
+  description: A static white-box audit skill spanning 9 languages and 55+ vulnerability types, chaining
+    findings into exploitable attack paths.
+  techStack:
+  - Claude Code skill
+  - Static analysis
+  repo: https://github.com/ikow/code-audit
+- name: URL Fetcher
+  tagline: Go library for resilient web fetching with AI summarization
+  description: Fetches web content past anti-bot protections, extracts the meaningful body, and generates
+    AI summaries via pluggable LLM providers.
+  techStack:
+  - Go
+  - OpenAI
+  - Gemini
+  - Anthropic
+  repo: https://github.com/ikow/url-fetcher
+- name: DHT-Go
+  tagline: High-performance BitTorrent DHT honeypot crawler
+  description: Impersonates virtual DHT nodes to harvest torrent infohashes at high speed — KRPC/bencode
+    over multiple UDP listeners.
+  techStack:
+  - Go
+  - UDP
+  - KRPC
+  repo: https://github.com/ikow/dht-go
+- name: Proxy Finder
+  tagline: Zero-setup proxy aggregation & validation toolkit
+  description: Fetches 10,000+ proxies from 7 sources, validates concurrently, and exports in tool-ready
+    formats — CLI, FastAPI service, and web UI.
+  techStack:
+  - Python
+  - FastAPI
+  - React
+  repo: https://github.com/ikow/proxy-finder
+- name: ProxyHub
+  tagline: Proxy harvesting & health-check API
+  description: Collects and scans proxies from across the internet, stores them in MongoDB, and exposes
+    an API to fetch live proxies.
+  techStack:
+  - Python
+  - MongoDB
+  repo: https://github.com/ikow/proxyhub
+websites:
+- name: FindPicked Games
+  tagline: 109 free classic games, playable instantly
+  description: A hand-built arcade of dependency-free browser games — 2048, chess, solitaire, minesweeper,
+    and 100+ more.
+  techStack:
+  - HTML
+  - CSS
+  - JavaScript
+  url: https://game.findpicked.com/
+  repo: https://github.com/ikow/findpicked-games
+  category: Games
+- name: The Photo Makr
+  tagline: AI-powered US passport photos in your browser
+  description: Turns any portrait into a compliant passport photo — AI background removal, print sheets,
+    Stripe checkout, 5 languages.
+  techStack:
+  - React
+  - FastAPI
+  - Stripe
+  url: https://thephotomakr.com/
+  repo: ''
+  category: Consumer App
+- name: Becoming Great
+  tagline: A cited, bilingual archive of history's builders
+  description: An open-source archive of first-hand materials from history's most impactful builders —
+    186 events, 302 cited sources.
+  techStack:
+  - Next.js
+  - TypeScript
+  url: https://becominggreat.org/
+  repo: https://github.com/ikow/becominggreat
+  category: Content
+- name: EPUB Reader
+  tagline: A private, in-browser EPUB reader
+  description: Drag in .epub files and read — books, progress, and theme persist entirely in-browser via
+    IndexedDB; nothing uploaded.
+  techStack:
+  - React
+  - epub.js
+  - IndexedDB
+  url: https://www.ikow.cn/epub-reader/
+  repo: https://github.com/ikow/epub-reader
+  category: Tools
+- name: Cyber Gomoku
+  tagline: Five-in-a-row, neon cyberpunk edition
+  description: A complete web Gomoku game shipped as a single self-contained HTML file, styled as a glowing
+    cyberpunk board.
+  techStack:
+  - HTML
+  - CSS
+  - JavaScript
+  url: https://www.ikow.cn/gomoku/
+  repo: https://github.com/ikow/gomoku
+  category: Games
+- name: Sales Mastery
+  tagline: A structured, bilingual sales knowledge base
+  description: Distills four classic sales books into notes, scripts, and a 12-week learning path.
+  techStack:
+  - Jekyll
+  - SCSS
+  url: https://www.ikow.cn/sales-mastery/
+  repo: https://github.com/ikow/sales-mastery
+  category: Content

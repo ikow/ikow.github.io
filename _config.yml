@@ -1,8 +1,8 @@
 # Basic
 title: kow
-subtitle: kow's blog
-welcome_message: <a href="https://app.ikow.cn/" target="_blank">Hack 4 fun</a>
-description: Welcome to kow's blog
+subtitle: Security Researcher &amp; Builder
+welcome_message: <a href="https://github.com/ikow" target="_blank">Hack 4 fun</a>
+description: kow — security researcher & builder. Kernel exploits, CVEs, AI/sandbox security, bug bounty, and shipping web apps.
 creator: <a href="https://www.ikow.cn/">kow</a>
 
 url: "https://www.ikow.cn"
@@ -22,13 +22,7 @@ blog_button:
 
 # Navigation buttons in the front page.
 nav:
-    - {title: App, description: My App, url: 'https://app.ikow.cn/'}
-    # - {title: Another Button, description: A button, url: 'http://example.com'}
-
-# Pagination
-gems: [jekyll-paginate]
-paginate: 10
-paginate_path: "page/:num/"
+    - {title: GitHub, description: My GitHub, url: 'https://github.com/ikow'}
 
 # Comment
 comment:

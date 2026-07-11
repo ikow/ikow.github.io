@@ -53,3 +53,12 @@ docs/_build/
 
 # PyBuilder
 target/
+
+# Jekyll build artifacts & local Ruby env
+_site/
+.jekyll-cache/
+.jekyll-metadata
+.sass-cache/
+vendor/
+.bundle/
+Gemfile.lock

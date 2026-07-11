@@ -1,0 +1,63 @@
+---
+layout: default
+title: Blog
+collapsed: true
+permalink: /blog/
+---
+
+<div class="blog-archive">
+  <header class="blog-archive__header">
+    <h1 class="blog-archive__title">Blog</h1>
+    <p class="blog-archive__subtitle">Notes on kernel exploitation, bug bounty, reverse engineering &amp; building things — {{ site.posts | size }} posts since 2016.</p>
+    <p class="blog-archive__back"><a href="/">&larr; Back to home</a></p>
+  </header>
+
+  {% assign postsByYear = site.posts | group_by_exp: "post", "post.date | date: '%Y'" %}
+  {% for year in postsByYear %}
+  <section class="blog-archive__year">
+    <h2 class="blog-archive__year-title">{{ year.name }}</h2>
+    <ol class="blog-archive__list">
+      {% for post in year.items %}
+      <li class="blog-archive__item">
+        <time class="blog-archive__date" datetime="{{ post.date | date_to_xmlschema }}">{{ post.date | date: "%m-%d" }}</time>
+        <a class="blog-archive__link" href="{{ post.url }}">{{ post.title }}</a>
+        {% if post.categories.size > 0 %}
+        <span class="blog-archive__tags">{% for c in post.categories limit:3 %}<span class="blog-archive__tag">{{ c }}</span>{% endfor %}</span>
+        {% endif %}
+      </li>
+      {% endfor %}
+    </ol>
+  </section>
+  {% endfor %}
+</div>
+
+<style>
+.blog-archive { max-width: 760px; padding: 1rem 0 4rem; }
+.blog-archive__header { margin-bottom: 2.5rem; }
+.blog-archive__title { font-size: 2.6rem; margin: 0 0 .4rem; letter-spacing: -.02em; }
+.blog-archive__subtitle { color: #7a8290; font-size: .98rem; line-height: 1.6; margin: 0 0 .5rem; }
+.blog-archive__back a { font-size: .9rem; color: #17a67b; text-decoration: none; }
+.blog-archive__back a:hover { text-decoration: underline; }
+.blog-archive__year { margin-bottom: 2.2rem; }
+.blog-archive__year-title {
+  font-size: 1rem; font-weight: 700; letter-spacing: .18em; text-transform: uppercase;
+  color: #b9c0cc; border-bottom: 1px solid rgba(0,0,0,.08); padding-bottom: .5rem; margin: 0 0 1rem;
+}
+.blog-archive__list { list-style: none; margin: 0; padding: 0; }
+.blog-archive__item {
+  display: flex; align-items: baseline; gap: .9rem; padding: .5rem 0;
+  border-bottom: 1px dashed rgba(0,0,0,.06); flex-wrap: wrap;
+}
+.blog-archive__date { font-family: 'JetBrains Mono', Menlo, monospace; font-size: .82rem; color: #9aa1ad; flex: 0 0 auto; min-width: 3.4em; }
+.blog-archive__link { font-size: 1.06rem; color: #2b2f36; text-decoration: none; font-weight: 500; flex: 1 1 260px; }
+.blog-archive__link:hover { color: #17a67b; }
+.blog-archive__tags { display: flex; gap: .35rem; flex: 0 0 auto; }
+.blog-archive__tag {
+  font-size: .68rem; letter-spacing: .04em; text-transform: uppercase; color: #8a919d;
+  background: rgba(0,0,0,.05); border-radius: 4px; padding: .12rem .45rem;
+}
+@media (max-width: 640px) {
+  .blog-archive__title { font-size: 2rem; }
+  .blog-archive__tags { flex-basis: 100%; margin-left: 4.3em; }
+}
+</style>
